@@ -1,0 +1,26 @@
+# action.yml
+name: 'Cloudbase Push'
+description: 'Cloudbase Push'
+inputs:
+  secret-id:  
+    description: 'AccessId'
+    required: true
+  secret-key:  
+    description: 'AccessKey'
+    required: true
+  dist:  
+    description: 'dist'
+    required: false
+    default: 'dist'
+  env-id:
+    desciprtion: 'env-id'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/dustella/tcb-actions:edge'
+  args:
+    - ${{ inputs.secret-id }}
+    - ${{ inputs.secret-key }}
+    - ${{ inputs.env-id }}
+    - ${{ inputs.dist }}
+  
